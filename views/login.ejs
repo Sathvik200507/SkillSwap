@@ -12,7 +12,7 @@
             <div class="logo">SkillSwap</div>
             <nav>
                 <a href="/register">Register</a>
-                <a href="/about">About</a>
+                <a href="/loginabout">About</a>
             </nav>
         </div>
     </header>
@@ -28,6 +28,9 @@
                 <input type="password" id="password" name="password" required>
 
                 <button type="submit">Login</button>
+                <% if (error) { %>
+                    <script>alert("<%=error%>")</script>
+                <% } %>
             </form>
         </div>
     </div>

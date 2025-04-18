@@ -21,20 +21,18 @@ app.use(express.urlencoded({extended:true}));
 
 app.post("/login", async (req, res) => {
     let { username, password } = req.body;
-    console.log("🔑 Username:", username, "Password:", password);
 
     let user = await User.findOne({ Username: username });
-    console.log("👤 Found user:", user);
 
     if (user) {
         if (password === user.Password) {
             req.session.userId = user._id;
-            res.render("home", { profiles: [] });
+            res.render("home", {error:null,profiles:[]});
         } else {
-            res.send("Invalid Password");
+            return res.render("login", { error: "Invalid Password" });
         }
     } else {
-        res.send("User does not exist");
+        return res.render("login", { error: "User does not exist. Please register!" });
     }
 });
 
@@ -48,7 +46,7 @@ async function main(){
 }
 
 app.get("/",async(req,res)=>{
-    res.render("login");
+    res.render("login",{error:null});
 });
 
 app.get("/profile", async (req, res) => {
@@ -60,8 +58,8 @@ app.get("/home",(req,res)=>{
     res.render("home", { profiles: [] });
 });
 
-app.get("/login",(req,res)=>{
-    res.render("login");
+app.get("/login",(req, res) => {
+    res.render("login",{ error: null});
 });
 
 app.get("/register",(req,res)=>{
