@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SkillSwap - Register</title>
+  <link rel="stylesheet" href="register.css" />
+  <style>
+    .password-container {
+      position: relative;
+    }
+    .toggle-password {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      font-size: 14px;
+      color: #333;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <div class="logo">SkillSwap</div>
+      <nav>
+        <a href="/login">Login</a>
+        <a href="/about">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="register-box">
+      <h2>Register</h2>
+      <form method="POST" action="/evaluate">
+        <label>Username:</label>
+        <input name="Username" type="text" required />
+
+        <label>Password:</label>
+        <div class="password-container">
+          <input name="Password" type="password" required />
+          <span class="toggle-password" onclick="togglePassword(this)">👁️</span>
+        </div>
+
+        <label>Confirm Password:</label>
+        <div class="password-container">
+          <input name="Con_Password" type="password" required />
+          <span class="toggle-password" onclick="togglePassword(this)">👁️</span>
+        </div>
+
+        <label>DOB:</label>
+        <input name="DOB" type="date" required />
+
+        <label>Phone Number:</label>
+        <input name="Phone" type="tel" pattern="[0-9]{10}" required placeholder="Enter 10-digit number" />
+
+        <label>Knowledged Skill:</label>
+        <select name="skill" required>
+          <option value="Java">Java</option>
+          <option value="Python">Python</option>
+          <option value="DBMS">DBMS</option>
+          <option value="OS">Operating Systems</option>
+        </select>
+
+        <label>Preferred Skill:</label>
+        <select name="preskill" required>
+          <option value="Java">Java</option>
+          <option value="Python">Python</option>
+          <option value="DBMS">DBMS</option>
+          <option value="OS">Operating Systems</option>
+        </select>
+
+        <label>LinkedIn ID:</label>
+        <input name="Linkedin" type="url" required />
+
+        <button type="submit">Register</button>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 SkillSwap. All rights reserved.
+  </footer>
+
+  <script>
+    const form = document.querySelector("form");
+    form.addEventListener("submit", function(event) {
+      const pass = form.querySelector("input[name='Password']");
+      const conPass = form.querySelector("input[name='Con_Password']");
+      if (pass.value !== conPass.value) {
+        alert("Password and Confirm Password do not match!");
+        event.preventDefault();
+        return false;
+      }
+    });
+
+    function togglePassword(el) {
+      const input = el.previousElementSibling;
+      if (input.type === "password") {
+        input.type = "text";
+        el.textContent = "";
+      } else {
+        input.type = "password";
+        el.textContent = "👁️";
+      }
+    }
+  </script>
+</body>
+</html>

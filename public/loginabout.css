@@ -1,0 +1,98 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+}
+
+header {
+    width: 100%;
+    background-color: teal;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-content {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 20px;
+  }
+
+
+.content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.info-section {
+    background-color: beige;
+    border: 2px solid teal;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    width: 90%;
+    max-width: 700px;
+}
+
+.info-section h2 {
+    background-color: darkcyan;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.info-section p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: black;
+}
+
+.contact-details p {
+    margin-bottom: 10px;
+}
+
+.contact-details a {
+    color: teal;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact-details a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    background-color: teal;
+    color: black;
+    font-size: 14px;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    margin-top: auto;
+}

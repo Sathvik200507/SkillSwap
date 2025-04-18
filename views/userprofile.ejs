@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SkillSwap - Profile</title>
+  <link rel="stylesheet" href="/userprofile.css" />
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <div class="logo"><a href="/home">SkillSwap</a></div>
+      <nav>
+        <a href="/about">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="profile-container">
+    <div class="profile-box">
+      <p><strong>Username:</strong> <%= user.Username %></p>
+      <p><strong>Date of Birth:</strong> <%= new Date(user.DOB).toLocaleDateString() %></p>
+      <p><strong>LinkedIn ID:</strong> <a href="<%= user.Linkedin %>" target="_blank"><%= user.Linkedin %></a></p>
+      <strong>Knowledged Skill:</strong><%=user.Skill%><br><br>
+      <strong>Preferred Skill:</strong><%=user.PreSkill%><br>
+      <p><Strong>Chat Here:</Strong></p>
+      <a href="https://wa.me/<%= user.Phone %>" target="_blank" class="whatsapp-link">Chat on WhatsApp</a>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 SkillSwap. All rights reserved.
+  </footer>
+</body>
+</html>

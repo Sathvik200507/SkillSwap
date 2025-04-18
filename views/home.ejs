@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SkillSwap - Home</title>
+  <link rel="stylesheet" href="/home.css" />
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <div class="logo">SkillSwap</div>
+      <nav class="nav-right">
+        <a href="/logout" class="logout-link">Logout</a>
+        <a href="/profile">
+          <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Profile Icon" class="profile-icon" />
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="skill-select-box">
+      <form action="/fetchSkillData" method="POST">
+        <label for="skill-select">Select a skill:</label>
+        <select id="skill-select" name="skill" required>
+          <option value="">-- Choose a skill --</option>
+          <option value="Java">Java</option>
+          <option value="Python">Python</option>
+          <option value="DBMS">DBMS</option>
+          <option value="OS">Operating Systems</option>
+        </select>
+        <button type="submit">Show Profiles</button>
+      </form>
+    </div>
+
+    <div class="profiles-container" id="profiles-container">
+      <% if (profiles && profiles.length > 0) { %>
+        <% profiles.forEach(profile => { %>
+          <div class="profile-card">
+            <a href="/profile/<%= profile.Username %>">
+              <p><strong>Username:</strong> <%= profile.Username %></p>
+            </a>
+          </div>
+        <% }) %>
+      <% } %>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 SkillSwap. All rights reserved.
+  </footer>
+</body>
+</html>
