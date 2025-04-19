@@ -115,24 +115,27 @@ app.post("/evaluate", async (req, res) => {
 });
 
 app.post("/fetchSkillData", async (req, res) => {
-    let { skill } = req.body;
+    let {skill} = req.body;
     let profiles = [];
     if (!req.session.userId) {
         return res.redirect("/login");
     }
-    let curUser=await User.findById(req.session.userId);
-    let user=curUser.Username;
-    if (skill === "Java") {
-        profiles = await Java.find({Username:{$ne:user}});
-    } else if (skill === "Python") {
-        profiles = await Python.find({Username:{$ne:user}});
-    } else if (skill === "DBMS") {
-        profiles = await DBMS.find({Username:{$ne:user}});
-    } else if (skill === "OS") {
-        profiles = await OS.find({Username:{$ne:user}});
+    skill = skill.toLowerCase();
+    const curUser = await User.findById(req.session.userId);
+    const user = curUser.Username;
+    if (skill === "java") {
+        profiles = await Java.find({ Username: { $ne: user } });
+    } else if (skill === "python") {
+        console.log("entered");
+        profiles = await Python.find({ Username: { $ne: user } });
+        console.log(profiles);
+    } else if (skill === "dbms") {
+        profiles = await DBMS.find({ Username: { $ne: user } });
+        console.log(profiles);
+    } else if (skill === "os") {
+        profiles = await OS.find({ Username: { $ne: user } });
     }
-
-    res.render("home", {profiles,skill});
+    res.render("home", { profiles });
 });
 
 app.get("/logout",(req,res)=>{

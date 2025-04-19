@@ -1,42 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SkillSwap - Login</title>
-    <link rel="stylesheet" href="login.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkillSwap - Login</title>
+  <link rel="stylesheet" href="login.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    .password-container {
+      position: relative;
+    }
+    .toggle-password {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      font-size: 16px;
+      color: #333;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <div class="logo">SkillSwap</div>
-            <nav>
-                <a href="/register">Register</a>
-                <a href="/loginabout">About</a>
-            </nav>
-        </div>
-    </header>
-
-    <div class="container">
-        <div class="login-box">
-            <h2>Login</h2>
-            <form method="POST" action="/login">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
-
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-
-                <button type="submit">Login</button>
-                <% if (error) { %>
-                    <script>alert("<%=error%>")</script>
-                <% } %>
-            </form>
-        </div>
+  <header>
+    <div class="header-content">
+      <div class="logo">SkillSwap</div>
+      <nav>
+        <a href="/register">Register</a>
+        <a href="/about">About</a>
+      </nav>
     </div>
+  </header>
 
-    <footer>
-        © 2025 SkillSwap. All rights reserved.
-    </footer>
+  <div class="container">
+    <div class="login-box">
+      <h2>Login</h2>
+      <form method="POST" action="/login">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required />
+
+        <label for="password">Password:</label>
+        <div class="password-container">
+          <input type="password" id="password" name="password" required />
+          <span class="toggle-password fas fa-eye-slash" onclick="togglePassword(this)"></span>
+        </div>
+
+        <button type="submit">Login</button>
+
+        <% if (error) { %>
+          <script>alert("<%= error %>")</script>
+        <% } %>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 SkillSwap. All rights reserved.
+  </footer>
+
+  <script>
+    function togglePassword(el) {
+      const input = el.previousElementSibling;
+      if (input.type === "password") {
+        input.type = "text";
+        el.classList.remove("fa-eye-slash");
+        el.classList.add("fa-eye");
+      } else {
+        input.type = "password";
+        el.classList.remove("fa-eye");
+        el.classList.add("fa-eye-slash");
+      }
+    }
+  </script>
 </body>
 </html>
