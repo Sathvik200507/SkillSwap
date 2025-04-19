@@ -5,6 +5,14 @@ const path = require("path");
 const User=require("./models/details.js");
 const {DBMS,Java,Python,OS}=require("./models/skills.js");
 
+require('dotenv').config();
+
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log("MongoDB connected!"))
+  .catch((err) => console.log("MongoDB connection error:", err));
+
+
+
 const session = require("express-session");
 const { Script } = require("vm");
 
