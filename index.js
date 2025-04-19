@@ -11,7 +11,7 @@ mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB connected!"))
   .catch((err) => console.log("MongoDB connection error:", err));
 
-
+app.use(express.static(__dirname));
 
 const session = require("express-session");
 const { Script } = require("vm");
