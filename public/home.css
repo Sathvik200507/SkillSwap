@@ -177,3 +177,58 @@ footer {
 .skill-select-box button:hover {
   background-color: darkcyan;
 }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+main.main-content {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.skill-select-box {
+  opacity: 0;
+  animation: fadeIn 1.2s ease-in forwards;
+  animation-delay: 0.3s;
+}
+
+.profile-card {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.profiles-container .profile-card:nth-child(1) {
+  animation-delay: 0.2s;
+}
+.profiles-container .profile-card:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.profiles-container .profile-card:nth-child(3) {
+  animation-delay: 0.6s;
+}
+.profiles-container .profile-card:nth-child(4) {
+  animation-delay: 0.8s;
+}
+
+.profile-card:hover {
+  transform: translateY(-10px) scale(1.07);
+  box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.25);
+  filter: brightness(1.15);
+}
